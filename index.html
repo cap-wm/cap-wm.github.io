@@ -1,11 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ForcePS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Website Under Construction</title>
+
+  <meta
+    name="description"
+    content="Anonymous project website — currently under construction."
+  >
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta property="og:title" content="Website Under Construction">
+  <meta
+    property="og:description"
+    content="Anonymous project website. More details will be available soon."
+  >
+  <meta property="og:url" content="https://cap-wm.github.io/">
+
+  <!-- Styling used by the selected academic project-page template -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  >
+  <link
+    href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --text: #17181c;
+      --muted: #646b76;
+      --accent: #4f46e5;
+      --accent-light: #eef0ff;
+      --border: #e8eaf0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(79, 70, 229, 0.12),
+          transparent 32rem
+        ),
+        linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%);
+      font-family: "Noto Sans", sans-serif;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .construction-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .construction-card {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: clamp(2rem, 6vw, 4.5rem);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 24px 70px rgba(25, 29, 46, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.6rem;
+      padding: 0.55rem 0.9rem;
+      color: var(--accent);
+      background: var(--accent-light);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      background: currentColor;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.12);
+    }
+
+    .publication-title {
+      margin-bottom: 1rem !important;
+      font-family: "Google Sans", "Noto Sans", sans-serif;
+      font-size: clamp(2.5rem, 7vw, 4.8rem) !important;
+      line-height: 1.04 !important;
+      letter-spacing: -0.045em;
+    }
+
+    .publication-authors {
+      color: var(--accent);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .description {
+      max-width: 540px;
+      margin: 1.4rem auto 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      padding: 1.25rem 1.5rem 1.75rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.78rem;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
+    @media (max-width: 480px) {
+      .construction-section {
+        padding: 2rem 1rem;
+      }
+
+      .construction-card {
+        border-radius: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>ForcePS</h1>
-    <p>Official ForcePS project website.</p>
+  <div class="page">
+    <main class="construction-section">
+      <section
+        class="container is-max-desktop"
+        aria-labelledby="page-title"
+      >
+        <div class="construction-card">
+          <div class="status">
+            <span class="status-dot" aria-hidden="true"></span>
+            Coming Soon
+          </div>
+
+          <h1
+            id="page-title"
+            class="title publication-title"
+          >
+            Website Under Construction
+          </h1>
+
+          <div class="publication-authors">
+            Anonymous
+          </div>
+
+          <p class="description">
+            We are preparing this project page.
+            More details will be available soon.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Based on the
+      <a
+        href="https://github.com/lin-tianyu/project-page-template"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Academic Project Page Template
+      </a>.
+    </footer>
+  </div>
 </body>
 </html>
