@@ -313,3 +313,4 @@ body {
 
 #arch .lbl.it, #arch .math-lbl, #arch tspan.it { stroke: #1f2430; stroke-width: .35px; }
 #arch .lbl.it.amber-t, #arch .math-lbl.amber-t { stroke: #8c5a17; }
+#arch text.amber-t tspan.it { stroke: none; }
