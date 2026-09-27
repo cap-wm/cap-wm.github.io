@@ -443,16 +443,16 @@
 
   // Results
   var RESULTS = {
-    methods: ['PPO (FORGE)', 'Safe RL', 'Safety layer', 'TD-MPC2 + depth', 'CAP-PPO', 'CAP-WM'],
+    methods: ['PPO (FORGE)', 'Safe RL', 'Safety layer', 'TD-MPC2 + depth', 'CAP-PPO (ours)', 'CAP-WM (ours)'],
     ours: [false, false, false, false, true, true],
     tasks: [
-      { name: 'Peg insertion',
+      { name: 'Peg insertion', member: { 5: ['FOCOPS', 'FCSCC'], 10: ['FOCOPS', 'SC³'] },
         5: [[97.7, 0.3], [42.7, 28.9], [90.2, 6.1], [99.1, 0.6], [78.0, 78.0], [98.1, 98.1]],
         10: [[97.7, 49.5], [71.4, 69.1], [91.9, 58.3], [99.1, 44.7], [90.5, 90.5], [98.0, 98.0]] },
-      { name: 'Gear meshing',
+      { name: 'Gear meshing', member: { 5: ['PID-Lag.', 'FCSCC'], 10: ['FOCOPS', 'SC³'] },
         5: [[99.8, 0.0], [31.6, 16.2], [21.7, 2.2], [95.2, 0.0], [94.7, 94.7], [94.8, 94.8]],
         10: [[99.8, 11.6], [75.8, 58.3], [87.3, 52.7], [95.2, 11.6], [98.4, 98.4], [95.0, 95.0]] },
-      { name: 'Nut threading',
+      { name: 'Nut threading', member: { 5: ['FOCOPS', 'FCSCC'], 10: ['FOCOPS', 'FCSCC'] },
         5: [[97.5, 0.0], [90.2, 0.0], [45.0, 1.1], [96.2, 0.0], [61.4, 61.4], [89.2, 89.2]],
         10: [[97.5, 18.6], [90.2, 64.8], [77.5, 72.0], [96.2, 17.7], [87.2, 87.2], [91.9, 91.9]] }
     ]
@@ -466,6 +466,8 @@
       var card = document.createElement('div');
       card.className = 'res-card';
       var h = document.createElement('h4'); h.textContent = task.name; card.appendChild(h);
+      var hd = document.createElement('div'); hd.className = 'res-head';
+      hd.innerHTML = '<span></span><span></span><span>SR / <b>SSR</b> (%)</span>'; card.appendChild(hd);
       RESULTS.methods.forEach(function (m, i) {
         var row = document.createElement('div');
         row.className = 'res-row' + (RESULTS.ours[i] ? ' ours' : '');
@@ -482,7 +484,9 @@
           var v = vals[i];
           row.querySelector('.sr').style.width = shown ? v[0] + '%' : '0';
           row.querySelector('.ssr').style.width = shown ? v[1] + '%' : '0';
-          row.querySelector('.val').textContent = v[1].toFixed(1);
+          var mem = RESULTS.tasks[ti].member[cap];
+          row.querySelector('.name').textContent = i === 1 || i === 2 ? RESULTS.methods[i] + ' (' + mem[i - 1] + ')' : RESULTS.methods[i];
+          row.querySelector('.val').innerHTML = '<span class="sr-v">' + v[0].toFixed(1) + '</span> / <b>' + v[1].toFixed(1) + '</b>';
           row.title = 'Success ' + v[0].toFixed(1) + '%, safe success ' + v[1].toFixed(1) + '%';
         });
       });

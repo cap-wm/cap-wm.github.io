@@ -251,7 +251,8 @@
           <path id="p-state" class="flow dashed amber" d="M990 182V92H735V116" marker-end="url(#ah-amber)" />
           <text class="lbl amber-t sm" x="862" y="84">Live controller state x<tspan class="sub" dy="4">t</tspan></text>
           <path id="p-next" class="flow gray" d="M990 442V462H95V374" marker-end="url(#ah-gray)" />
-          <text class="lbl sm gray-t next-lbl" x="540" y="458">Next observation o<tspan class="sub" dy="4">t+1</tspan></text>
+          <rect class="lbl-bg" x="452" y="450" width="176" height="24" />
+          <text class="lbl gray-t" x="540" y="467">Next observation <tspan class="it">o</tspan><tspan class="sub it" dy="4">t+1</tspan></text>
 
           <g id="pulses"></g>
         </svg>
@@ -311,7 +312,6 @@
           <figcaption><b>(c)</b> Applied force: raw proposal vs. projected action.</figcaption>
         </figure>
       </div>
-      <p class="viz-note has-text-centered">Illustrative two-axis example.</p>
     </div>
   </section>
 
@@ -371,7 +371,6 @@
         <span><i class="lg lg-ssr"></i>Safe success</span>
         <span><i class="lg lg-ours"></i>CAP (ours)</span>
       </div>
-      <p class="viz-note has-text-centered">Safe RL: best of CPO, PID-Lagrangian, FOCOPS. Safety layer: best of SC<sup>3</sup>, FCSCC.</p>
     </div>
   </section>
 
