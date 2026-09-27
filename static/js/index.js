@@ -337,7 +337,7 @@
 
     function drawForce(S) {
       var o = fit(cForce), g = o.g, W = o.w, H = o.h;
-      var pad = { l: 34, r: 10, t: 14, b: 26 };
+      var pad = { l: 34, r: 16, t: 14, b: 26 };
       var X = function (t) { return pad.l + (1 - (S.t - t) / HIST) * (W - pad.l - pad.r); };
       var Y = function (f) { return pad.t + (1 - f / 14) * (H - pad.t - pad.b); };
 
@@ -361,11 +361,16 @@
         });
         g.stroke();
       }
-      line('fRaw', '#9aa1ab', 1.6);
+      line('fRaw', 'rgba(59,118,166,0.55)', 1.6);
       line('fExe', COL.amber, 2.4);
 
+      var now = trace[trace.length - 1], xn = X(now.t);
+      g.fillStyle = '#fff'; g.strokeStyle = COL.blue; g.lineWidth = 2.2;
+      g.beginPath(); g.arc(xn, Y(Math.min(now.fRaw, 14)), 5.5, 0, 7); g.fill(); g.stroke();
+      g.fillStyle = COL.amber; g.fillRect(xn - 5, Y(now.fExe) - 5, 10, 10);
+
       font(g, 11);
-      g.fillStyle = '#6b7280'; g.fillText('raw proposal', pad.l + 6, pad.t + 12);
+      g.fillStyle = COL.blue; g.fillText('raw proposal', pad.l + 6, pad.t + 12);
       g.fillStyle = COL.amber; g.fillText('with CAP', pad.l + 6, pad.t + 26);
       g.fillStyle = COL.muted; g.fillText('time', W - pad.r - 26, H - 6);
     }
