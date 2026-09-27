@@ -170,9 +170,9 @@ body {
 #arch #n-cap.hot > rect.panel { filter: drop-shadow(0 0 8px rgba(184, 121, 42, .6)); }
 
 #arch.mode-ppo .only-wm,
-#arch.mode-ppo .only-wm-panel { opacity: .18; }
+#arch.mode-ppo .only-wm-panel { opacity: .38; }
 #arch.mode-wm .only-ppo,
-#arch.mode-wm .only-ppo-panel { opacity: .18; }
+#arch.mode-wm .only-ppo-panel { opacity: .38; }
 #arch .only-wm, #arch .only-ppo, #arch .only-wm-panel, #arch .only-ppo-panel { transition: opacity .4s; }
 
 .pulse { fill: #fff; stroke-width: 3; }
