@@ -17,11 +17,11 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=5">
+  <link rel="stylesheet" href="static/css/index.css?v=8">
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  <script defer src="static/js/index.js?v=5"></script>
+  <script defer src="static/js/index.js?v=8"></script>
 </head>
 
 <body>
@@ -286,10 +286,11 @@
           <div class="eq">$$\big|c_i + m_i a_i\big| \le d_i + \big(\kappa_i \bar F_t - K_{p,i}|v_{t,i}|\Delta t\big)_+$$</div>
           <div class="eq-note">dead zone \(d_i\), per-step budget \(\bar F_t \le F_{\max}-\varepsilon\)</div>
         </div>
-        <div class="eq-card">
+        <div class="eq-card eq-card-wide">
           <div class="eq-step">3</div>
           <div class="eq-title">Box projection</div>
-          <div class="eq">$$a^{\mathrm{exec}}_t = \operatorname{clip}\!\Big(a_t;\ \textstyle\prod_i \mathcal{I}^{\mathrm{clip}}_i \cap \mathcal{I}^{\mathrm{vel}}_i \cap \mathcal{I}^{\mathrm{force}}_i \cap [-1,1]\Big)$$</div>
+          <div class="eq eq-wide">$$a^{\mathrm{exec}}_t = \operatorname{clip}\!\Big(a_t;\ \textstyle\prod_i \mathcal{I}^{\mathrm{clip}}_i \cap \mathcal{I}^{\mathrm{vel}}_i \cap \mathcal{I}^{\mathrm{force}}_i \cap [-1,1]\Big)$$</div>
+          <div class="eq eq-narrow">$$\begin{aligned} a^{\mathrm{exec}}_t &= \operatorname{clip}\big(a_t;\ \mathcal{A}(x_t)\big) \\ \mathcal{A}(x_t) &= \textstyle\prod_i\, [L_i, U_i] \\ [L_i, U_i] &= \mathcal{I}^{\mathrm{clip}}_i \cap \mathcal{I}^{\mathrm{vel}}_i \\ &\quad\ \cap\, \mathcal{I}^{\mathrm{force}}_i \cap [-1,1] \end{aligned}$$</div>
           <div class="eq-note">one clamp per axis</div>
         </div>
       </div>

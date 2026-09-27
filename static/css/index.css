@@ -197,7 +197,7 @@ body {
 /* theory */
 .eq-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-top: 1rem;
 }
@@ -218,7 +218,11 @@ body {
 }
 .eq-title { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .95rem; }
 .katex { -webkit-text-stroke: .3px currentColor; }
-.eq { overflow-x: auto; overflow-y: hidden; font-size: .92rem; }
+.eq { font-size: .92rem; }
+.eq .katex-display { margin: .7em 0; }
+.eq-card-wide { grid-column: 1 / -1; }
+.eq-narrow { display: none; }
+.eq-grid { max-width: 1000px; margin-left: auto; margin-right: auto; row-gap: 22px; }
 .eq-note { font-size: .8rem; color: var(--muted); }
 .guarantee {
   margin: 1.2rem auto 0;
@@ -227,7 +231,6 @@ body {
   border: 1.5px solid var(--amber);
   border-radius: 12px;
   padding: .1rem 1rem;
-  overflow-x: auto;
 }
 
 .viz-grid {
@@ -298,13 +301,20 @@ body {
 #BibTeX pre { background: #f5f5f5; border-radius: 8px; }
 
 @media (max-width: 1023px) {
-  .eq-grid, .viz-grid, .res-grid { grid-template-columns: minmax(0, 1fr); }
+  .viz-grid, .res-grid { grid-template-columns: minmax(0, 1fr); }
   .viz canvas { height: 240px; }
+}
+@media (max-width: 480px) {
+  .eq { font-size: .74rem; }
+  .guarantee { font-size: .8rem; padding: .1rem .5rem; }
 }
 @media (max-width: 768px) {
   .teaser-grid { grid-template-columns: 1fr; }
   .vid-pair { grid-template-columns: minmax(0, 1fr); }
   .content.has-text-justified { text-align: left !important; }
+  .eq-grid { grid-template-columns: minmax(0, 1fr); }
+  .eq-wide { display: none; }
+  .eq-narrow { display: block; }
   .publication-title { font-size: 1.9rem !important; }
   .stat-row { gap: 1rem; }
   .seg button { padding: .35rem .6rem; font-size: .8rem; }

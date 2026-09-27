@@ -22,6 +22,19 @@
     }
   }
 
+  function fitMath() {
+    document.querySelectorAll('.eq, .guarantee').forEach(function (e) {
+      var h = e.querySelector('.katex-html');
+      if (!h || !e.offsetParent) { return; }
+      e.style.fontSize = '';
+      var need = h.scrollWidth, have = h.clientWidth - 2;
+      if (need > h.clientWidth + 1) {
+        var fs = parseFloat(getComputedStyle(e).fontSize);
+        e.style.fontSize = Math.max(9, fs * have / need) + 'px';
+      }
+    });
+  }
+
   // Teaser
   function initTeaser() {
     document.querySelectorAll('video.lazy-video').forEach(function (v) {
@@ -588,6 +601,9 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     renderMath();
+    fitMath();
+    window.addEventListener('resize', fitMath);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitMath); }
     initTeaser();
     initArch();
     initTheory();
