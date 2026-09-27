@@ -501,6 +501,86 @@
     onVisible(grid, function (vis) { if (vis && !shown) { shown = true; update(); } }, 0.2);
   }
 
+  // Lightbox
+  function initLightbox() {
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.innerHTML = '<button class="lb-close" aria-label="Close">&times;</button><div class="lb-body"></div>';
+    document.body.appendChild(box);
+    var body = box.querySelector('.lb-body');
+    var vids = [];
+
+    function close() {
+      vids.forEach(function (v) { v.pause(); v.removeAttribute('src'); v.load(); });
+      vids = []; body.innerHTML = '';
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    function open(sources, labels, t, layout, aspect) {
+      body.innerHTML = '';
+      body.className = 'lb-body ' + layout;
+      vids = sources.map(function (src, i) {
+        var fig = document.createElement('figure');
+        if (labels) {
+          var cap = document.createElement('div');
+          cap.className = 'vid-head';
+          cap.innerHTML = labels[i];
+          fig.appendChild(cap);
+        }
+        var v = document.createElement('video');
+        v.poster = src.replace(/\.mp4$/, '.jpg');
+        v.style.aspectRatio = String(aspect);
+        v.style.width = layout === 'stack' ? 'min(96vw, calc((44vh - 24px) * ' + aspect + '))'
+          : layout === 'side' ? 'min(46vw, calc(84vh * ' + aspect + '))'
+          : 'min(96vw, calc(90vh * ' + aspect + '))';
+        v.src = src; v.muted = true; v.playsInline = true; v.controls = sources.length === 1;
+        v.loop = sources.length === 1;
+        fig.appendChild(v); body.appendChild(fig);
+        v.addEventListener('loadedmetadata', function () { try { v.currentTime = t || 0; } catch (e) {} });
+        return v;
+      });
+      if (vids.length > 1) {
+        vids.forEach(function (v) {
+          v.addEventListener('ended', function () {
+            vids.forEach(function (o) { o.currentTime = 0; o.play().catch(function () {}); });
+          });
+          v.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var paused = vids[0].paused;
+            vids.forEach(function (o) { if (paused) { o.play().catch(function () {}); } else { o.pause(); } });
+          });
+        });
+      }
+      vids.forEach(function (v) { v.play().catch(function () {}); });
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    box.addEventListener('click', function (e) { if (e.target === box || e.target.classList.contains('lb-body')) { close(); } });
+    box.querySelector('.lb-close').addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) { close(); } });
+
+    document.querySelectorAll('.teaser-grid figure').forEach(function (fig) {
+      var v = fig.querySelector('video');
+      fig.classList.add('zoomable');
+      fig.addEventListener('click', function () { open([v.dataset.src], null, v.currentTime, 'single', 16 / 9); });
+    });
+
+    var pair = document.getElementById('vid-pair');
+    if (pair) {
+      pair.querySelectorAll('.vid-card').forEach(function (card) { card.classList.add('zoomable'); });
+      pair.addEventListener('click', function () {
+        var vb = document.getElementById('vid-base'), vo = document.getElementById('vid-ours');
+        var src = [vb, vo].map(function (v) { return v.getAttribute('src') || v.getAttribute('poster').replace(/\.jpg$/, '.mp4'); });
+        if (!src[0] || !src[1]) { return; }
+        var heads = pair.querySelectorAll('.vid-head');
+        open(src, [heads[0].innerHTML, heads[1].innerHTML], vo.currentTime,
+          pair.classList.contains('is-square') ? 'side' : 'stack',
+          pair.classList.contains('is-square') ? 1 : (/_third\.mp4$/.test(src[0]) ? 16 / 9 : 1640 / 720));
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderMath();
     initTeaser();
@@ -508,5 +588,6 @@
     initTheory();
     initVideos();
     initResults();
+    initLightbox();
   });
 })();
