@@ -1,9 +1,7 @@
+# CAP project page
 
-This repository hosts the temporary project website available at:
+Project page for *Closed-form Action Projection for Constrained World Model Planning in Robotics*,
+currently under double-blind review: https://cap-wm.github.io/
 
-https://cap-wm.github.io/
-
-The project page is currently anonymized and under construction.
-
-The website is based on the
-[Academic Project Page Template](https://github.com/lin-tianyu/project-page-template).
+Built on the [Academic Project Page Template](https://github.com/lin-tianyu/project-page-template).
+Licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
