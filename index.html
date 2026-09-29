@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="static/fonts/fonts.css">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/katex/katex.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=9">
+  <link rel="stylesheet" href="static/css/index.css?v=10">
 
   <script defer src="static/katex/katex.min.js"></script>
   <script defer src="static/katex/auto-render.min.js"></script>
@@ -80,15 +80,15 @@
         <div class="teaser-grid">
           <figure>
             <video class="lazy-video" data-src="static/videos/peg/cap_wm_5n_third.mp4" poster="static/videos/peg/cap_wm_5n_third.jpg" muted loop playsinline preload="none"></video>
-            <figcaption>Peg insertion</figcaption>
+            <figcaption>Peg insertion <span class="speed">1&times;</span></figcaption>
           </figure>
           <figure>
             <video class="lazy-video" data-src="static/videos/gear/cap_wm_5n_third.mp4" poster="static/videos/gear/cap_wm_5n_third.jpg" muted loop playsinline preload="none"></video>
-            <figcaption>Gear meshing</figcaption>
+            <figcaption>Gear meshing <span class="speed">1&times;</span></figcaption>
           </figure>
           <figure>
             <video class="lazy-video" data-src="static/videos/nut/cap_wm_5n_third.mp4" poster="static/videos/nut/cap_wm_5n_third.jpg" muted loop playsinline preload="none"></video>
-            <figcaption>Nut threading</figcaption>
+            <figcaption>Nut threading <span class="speed">1&times;</span></figcaption>
           </figure>
         </div>
         <h2 class="subtitle has-text-centered teaser-caption">
@@ -342,15 +342,15 @@
 
       <div class="vid-pair" id="vid-pair">
         <figure class="vid-card">
-          <div class="vid-head"><span class="chip chip-base">PPO (FORGE)</span><span class="vid-sub">unconstrained</span></div>
+          <div class="vid-head"><span class="chip chip-base">PPO (FORGE)</span><span class="vid-sub">unconstrained</span><span class="speed">1&times;</span></div>
           <video id="vid-base" muted playsinline preload="none"></video>
         </figure>
         <figure class="vid-card">
-          <div class="vid-head"><span class="chip chip-ours">CAP-WM</span><span class="vid-sub">ours</span></div>
+          <div class="vid-head"><span class="chip chip-ours">CAP-WM</span><span class="vid-sub">ours</span><span class="speed">1&times;</span></div>
           <video id="vid-ours" muted playsinline preload="none"></video>
         </figure>
       </div>
-      <p class="viz-note has-text-centered">PPO (FORGE) is trained without a cap; the same rollout is shown against both caps. Real time.</p>
+      <p class="viz-note has-text-centered">PPO (FORGE) is trained without a cap; the same rollout is shown against both caps.</p>
     </div>
   </section>
 

@@ -360,3 +360,19 @@ body {
   .lb-body.side { flex-direction: column; }
   .lb-body.side video { width: min(96vw, 40vh) !important; }
 }
+
+.speed {
+  display: inline-block;
+  margin-left: .35rem;
+  padding: 0 .4rem;
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #4a4f57;
+  border: 1px solid #cfd4db;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+.vid-head .speed { margin-left: auto; }
+.lb-body .speed { color: #d6dae0; border-color: #6b7280; }
+.lb-body .vid-head { align-self: stretch; }
